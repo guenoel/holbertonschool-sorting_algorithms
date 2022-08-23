@@ -10,7 +10,7 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t test = 1, tmp, i, j;
+	size_t test = 1, i, j, tmp;
 
 	if (!(array))
 		exit(EXIT_FAILURE);
@@ -20,7 +20,7 @@ void selection_sort(int *array, size_t size)
 		test = 0;
 		for (i = 0; i < size; i++)
 		{
-			for (j = 0; j < size; j++)
+			for (j = i; j < size; j++)
 			{
 				if (array[i] > array[j])
 				{
