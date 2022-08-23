@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sort.h"
 
 /**
  * selection_sort - alg to sort in ascending order
