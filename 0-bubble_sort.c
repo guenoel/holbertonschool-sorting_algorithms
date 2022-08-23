@@ -22,6 +22,9 @@ void bubble_sort(int *array, size_t size)
 		i = 0;
 		for (n = 0, i = 0; n < size; n++)
 		{
+			if (n == size)
+				break;
+	
 			if (array[n] > array[n + 1])
 			{
 				tmp = array[n];
