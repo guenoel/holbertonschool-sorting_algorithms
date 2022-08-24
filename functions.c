@@ -7,7 +7,7 @@
  * Return: Nothing
  */
 
-void swap_node(listint_t *node)
+void swap_node-node_prev(listint_t *node)
 {
 	listint_t *tmp1; /*x*/
 	listint_t *tmp2; /*z*/
@@ -39,3 +39,5 @@ void swap_node(listint_t *node)
 	node = tmp3;
 	printf("node tmp3: %d\n", node->n);
 }
+
+void swap_node(listint_t *node1, listint_t *node2)
