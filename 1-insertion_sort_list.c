@@ -37,6 +37,7 @@ void swap_node(listint_t *node1, listint_t *node2)
 
 	if (tmpnext2)
 		tmpnext2->prev = node1;
+
 }
 
 /**
@@ -56,21 +57,24 @@ void insertion_sort_list(listint_t **list)
 	{
 		cpt = 0;
 
-		if (tmpswap->next)
-			node = tmpswap;
-		else
+		/*condition de fin de liste + load flag de reprise*/
+		if (tmpswap->next == NULL && node->n > node->prev->n)
 			break;
-
+		else
+			node = tmpswap;
+		/*recherche de noeud plus petit que precedent*/
 		while (node->n > node->prev->n)
 		{
 			node = node->next;
 		}
 
+		/*memo flag de reprise*/
 		tmpswap = node->prev;
 		while (node->prev->n > node->n)
 		{
 			swap_node(node->prev, node);
 			cpt++;
+			/*condition de swap en debut de liste*/
 			if (node->prev == NULL)
 			{
 				*list = node;
