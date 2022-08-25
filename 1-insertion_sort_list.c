@@ -47,12 +47,13 @@ void swap_node(listint_t *node1, listint_t *node2)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node = *list;
+	listint_t *node;
 	listint_t *tmpswap;
 	int cpt = 1;
 
 	if (list == NULL)
-		exit(EXIT_FAILURE);
+		return;
+	node = *list;
 	if (node->next)
 		node = node->next;
 	tmpswap = node;
