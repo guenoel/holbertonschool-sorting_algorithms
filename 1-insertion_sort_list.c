@@ -51,14 +51,17 @@ void insertion_sort_list(listint_t **list)
 	listint_t *tmpswap;
 	int cpt = 1;
 
-	node = node->next;
+	if (list == NULL)
+		return;
+	if (node->next)
+		node = node->next;
 	tmpswap = node;
 	while (cpt)
 	{
 		cpt = 0;
 		
 		/*condition de list de 1 element*/
-		if (node->next == NULL)
+		if (node->next == NULL && node->prev == NULL)
 			return;
 
 		/*condition de fin de liste + load flag de reprise*/
