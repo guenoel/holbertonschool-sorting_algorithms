@@ -22,18 +22,19 @@ void swap_node(listint_t *node1, listint_t *node2)
 	if (tmpprev1)
 		tmpprev1->next = node2;
 
-	node1->prev = tmpprev2;
+	if (node1->next == node2)
+		node1->prev = node2;
+	else
+		node1->prev = tmpprev2;
 	node1->next = tmpnext2;
+	
 
-	tmpnext1->prev = node2;
-
-
-	tmpprev2->next = node1;
-
+	if (node2->prev == node1)
+		node2->next = node1;
+	else
+		node2->next = tmpnext1;
 	node2->prev = tmpprev1;
-	node2->next = tmpnext1;
 
 	if (tmpnext2)
 		tmpnext2->prev = node1;
-
 }
