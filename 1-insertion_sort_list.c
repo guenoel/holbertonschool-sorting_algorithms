@@ -70,12 +70,13 @@ void insertion_sort_list(listint_t **list)
 		while (node->prev->n > node->n)
 		{
 			swap_node(node->prev, node);
-			print_list(*list);
 			cpt++;
 			if (node->prev == NULL)
-				break;
-			if (node->prev->prev == NULL)
+			{
 				*list = node;
+				node = node->next;
+			}
+			print_list(*list);
 		}
 	}
 }
