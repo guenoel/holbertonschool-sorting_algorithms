@@ -56,15 +56,21 @@ void insertion_sort_list(listint_t **list)
 	while (cpt)
 	{
 		cpt = 0;
+		
+		/*condition de list de 1 element*/
+		if (node->next == NULL)
+			return;
 
 		/*condition de fin de liste + load flag de reprise*/
 		if (tmpswap->next == NULL && node->n > node->prev->n)
-			break;
-		else
-			node = tmpswap;
+			return;
+
+		node = tmpswap;
 		/*recherche de noeud plus petit que precedent*/
 		while (node->n > node->prev->n)
 		{
+			if (node->next == NULL)
+				return;
 			node = node->next;
 		}
 
