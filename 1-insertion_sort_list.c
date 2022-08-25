@@ -52,22 +52,18 @@ void insertion_sort_list(listint_t **list)
 	int cpt = 1;
 
 	if (list == NULL)
-		return;
+		exit(EXIT_FAILURE);
 	if (node->next)
 		node = node->next;
 	tmpswap = node;
 	while (cpt)
 	{
 		cpt = 0;
-		
-		/*condition de list de 1 element*/
 		if (node->next == NULL && node->prev == NULL)
 			return;
-
 		/*condition de fin de liste + load flag de reprise*/
 		if (tmpswap->next == NULL && node->n > node->prev->n)
 			return;
-
 		node = tmpswap;
 		/*recherche de noeud plus petit que precedent*/
 		while (node->n > node->prev->n)
@@ -76,8 +72,6 @@ void insertion_sort_list(listint_t **list)
 				return;
 			node = node->next;
 		}
-
-		/*memo flag de reprise*/
 		tmpswap = node->prev;
 		while (node->prev->n > node->n)
 		{
