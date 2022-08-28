@@ -13,15 +13,21 @@ void shell_sort(int *array, size_t size)
 	int tmp, h = 1;
 	int n = (int)size;
 
-	while(h <= n / 3)
+	if (array == NULL)
+		return;
+
+	while (h <= n / 3)
 	{
 		h = (h * 3) + 1;
 	}
 
 	while (h > 0)
 	{
+
 		for (high = h; high < n; high++)
 		{
+			if (size < 2)
+				break;
 			tmp = array[high];
 			low = high;
 			while (low > h - 1 && array[low - h] >= tmp)
