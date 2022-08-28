@@ -1,34 +1,79 @@
 #include "sort.h"
 
 /**
- * quick_sort - alg to sort
- * @array: array
- * @size: array size
- * Return: void
+ * swap - swap function
+ * @a: node a
+ * @b: node b
  */
 
+void swap(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * partition - function to check and swith pivot
+ * @array: array
+ * @low: low value
+ * @high: high value
+ * @size: size of array
+ * Return: i
+ */
+
+int partition(int array[], int low, int high, size_t size)
+{
+	int pivot, i, j;
+
+	i = low;
+	pivot = array[high];
+
+	for (j = low; j < high; j++)
+	{
+		if (array[j] <= pivot)
+		{
+			swap(&array[i], &array[j]);
+			if (j != i)
+				print_array(array, size);
+			i++;
+		}
+	}
+	swap(&array[i], &array[high]);
+	if (i != high)
+		print_array(array, size);
+	return (i);
+}
+
+/**
+ * recur_quick - quick sort function
+ * @array: ...
+ * @low: low value
+ * @high: high value
+ * @size: size of array
+ */
+
+void recur_quick(int array[], int low, int high, size_t size)
+{
+	int pivot;
+
+	if (low < high)
+	{
+		pivot = partition(array, low, high, size);
+		recur_quick(array, low, pivot - 1, size);
+		recur_quick(array, pivot + 1, high, size);
+	}
+}
+
+/**
+ * quick_sort - recursive quick sort
+ * @array: array
+ * @size: size of array
+ */
 
 void quick_sort(int *array, size_t size)
 {
-        size_t index = 0, a_index, i, j = 0;
-
-        for (i = 0; i < size - 1; i++)
-        {
-                index = i;
-                for (j = i + 1; j < size; j++)
-                {
-                        if (array[index] > array[j])
-                                index = j;
-                }
-                if (index == i)
-                        continue;
-                if (index != i)
-                {
-                        a_index = array[i];
-                        array[i] = array[index];
-                        array[index] = a_index;
-                }
-                print_array(array, size);
-
-        }
+	recur_quick(array, 0, size - 1, size);
 }
