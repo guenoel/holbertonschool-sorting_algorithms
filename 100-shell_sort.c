@@ -15,6 +15,8 @@ void shell_sort(int *array, size_t size)
 
 	if (array == NULL)
 		return;
+	if (size < 2)
+		return;
 
 	while (h <= n / 3)
 	{
@@ -26,8 +28,6 @@ void shell_sort(int *array, size_t size)
 
 		for (high = h; high < n; high++)
 		{
-			if (size < 2)
-				break;
 			tmp = array[high];
 			low = high;
 			while (low > h - 1 && array[low - h] >= tmp)
