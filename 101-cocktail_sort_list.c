@@ -43,6 +43,25 @@ listint_t *swap_node2(listint_t *node1, listint_t *node2)
 }
 
 /**
+ * test_null - testeur de null
+ * @list: list
+ *
+ * Return: 1 for exit 0 to continue
+ */
+
+int test_null(listint_t **list)
+{
+	listint_t *node;
+
+	if (list == NULL)
+		return (1);
+	node = *list;
+	if (node->next == NULL)
+		return (1);
+	else
+		return (0);
+}
+/**
  * cocktail_sort_list - sort list cocktail method
  * @list: list
  *
@@ -53,11 +72,9 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *node;
 	int cpt = 1;
 
-	if (list == NULL)
+	if (test_null(list))
 		return;
 	node = *list;
-	if (node->next == NULL)
-		return;
 	while (cpt)
 	{
 		cpt = 0;
