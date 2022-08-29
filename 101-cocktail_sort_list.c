@@ -1,14 +1,14 @@
 #include "sort.h"
 
 /**
- * swap_node - function to swap node
+ * swap_node2 - function to swap node
  * @node1: node to be swaped
  * @node2: other node
  *
  * Return: Nothing
  */
 
-void swap_node(listint_t *node1, listint_t *node2)
+listint_t *swap_node2(listint_t *node1, listint_t *node2)
 {
 	listint_t *tmpprev1;
 	listint_t *tmpnext1;
@@ -38,6 +38,8 @@ void swap_node(listint_t *node1, listint_t *node2)
 
 	if (tmpnext2)
 		tmpnext2->prev = node1;
+
+	return (node2);
 }
 
 /**
@@ -49,7 +51,6 @@ void swap_node(listint_t *node1, listint_t *node2)
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *node;
-
 	int cpt = 1;
 
 	node = *list;
@@ -65,8 +66,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n > node->next->n)
 			{
-				swap_node(node, node->next);
-				node = node->prev;
+				node = swap_node2(node, node->next);
 				cpt = 1;
 				print_list(*list);
 			}
@@ -75,18 +75,15 @@ void cocktail_sort_list(listint_t **list)
 		if (cpt == 0)
 			return;
 		cpt = 0;
-
 		node = node->prev;
-
 		while (node->prev || node->n > node->next->n)
 		{
 			if (node->n > node->next->n)
 			{
-				swap_node(node, node->next);
-				node = node->prev;
+				node = swap_node2(node, node->next);
+				cpt = 1;
 				if (node->prev == NULL)
 					*list = node;
-				cpt = 1;
 				print_list(*list);
 			}
 			if (node->prev)
