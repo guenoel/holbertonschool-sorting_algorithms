@@ -53,9 +53,9 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *node;
 	int cpt = 1;
 
-	node = *list;
 	if (list == NULL || node->next == NULL)
 		return;
+	node = *list;
 	while (cpt)
 	{
 		cpt = 0;
